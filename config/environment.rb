@@ -40,4 +40,5 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
   
   config.gem "authlogic"
+  config.gem "inherited_resources", :version => '1.0.6'
 end

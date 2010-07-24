@@ -1,0 +1,143 @@
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'test@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."username") = 'test') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '2165bc7b9ed09ff4475a5196faa3cf021130f761b815bd502ff8588bbae3fcdd2c6d36d7b66e44b2451b9e73db7d4a20025138cb205d22900c4a8cce5a092c8a') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'test@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."username") = 'test') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '5c2e19baa1780eac55e8ad28579052b90fc5570473c465dd8ec43b78bdab86f4a7f6a05ee70c4af95df9e23c6322b10f204e7c39f2abff070692fd15a04914ec') LIMIT 1[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 12:14:43', '434d0f687994c837c08f35a50235a57325fcf399d801ab3b33e2c699c911197509f8244ade7a47d99374666351dd176042385302bf7b106ecee347216d334747', 'test', 'IhexeQlhTfMUc7qO2Bk2', '5c2e19baa1780eac55e8ad28579052b90fc5570473c465dd8ec43b78bdab86f4a7f6a05ee70c4af95df9e23c6322b10f204e7c39f2abff070692fd15a04914ec', 'test@example.com', '2010-07-24 12:14:43')[0m
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:12:13) [POST]
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:12:13', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:12:13')[0m
+Rendering users/create
+Completed in 57ms (View: 1, DB: 0) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:15:08) [POST]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:16:44) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:16:44', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:16:44')[0m
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:17:00) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:17:00', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:17:00')[0m
+Rendering users/create
+Completed in 55ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:17:41) [POST]
+  [4;36;1mUser Create (59.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:17:41', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:17:41')[0m
+Rendering users/create
+Completed in 115ms (View: 1, DB: 60) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:29:25) [POST]
+  [4;36;1mUser Create (71.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:29:25', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:29:25')[0m
+Rendering users/create
+Completed in 126ms (View: 1, DB: 72) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:29:45) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:29:45', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:29:45')[0m
+Rendering users/create
+Completed in 54ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:33:43) [POST]
+  [4;36;1mUser Create (58.3ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:33:43', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:33:43')[0m
+Rendering users/create
+Completed in 113ms (View: 1, DB: 58) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:35:10) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:35:10', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:35:10')[0m
+Rendering users/create
+Completed in 53ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:36:34) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:36:34', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:36:34')[0m
+Rendering users/create
+Completed in 54ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:37:17) [POST]
+  [4;36;1mUser Create (73.1ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:37:17', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:37:17')[0m
+Rendering users/create
+Completed in 129ms (View: 1, DB: 73) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:37:47) [POST]
+  [4;36;1mUser Create (71.4ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:37:47', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:37:47')[0m
+Rendering users/create
+Completed in 126ms (View: 1, DB: 71) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:38:28) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:38:28', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:38:28')[0m
+Rendering users/create
+Completed in 54ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:39:33) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:39:33', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:39:33')[0m
+Rendering users/create
+Completed in 54ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:39:47) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:39:47', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:39:47')[0m
+Rendering users/create
+Completed in 54ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:42:10) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:42:10', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:42:10')[0m
+Rendering users/create
+Completed in 54ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:44:03) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:44:03', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:44:03')[0m
+Redirected to http://test.host/users/new?successful=true
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:44:46) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:44:46', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:44:46')[0m
+Redirected to http://test.host/users/new?successful=true
+Completed in 54ms (DB: 1) | 302 Found [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:45:11) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:45:11', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:45:11')[0m
+Rendering users/create
+Completed in 53ms (View: 1, DB: 1) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:45:24) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:45:24', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:45:24')[0m
+Redirected to http://test.host/users/new?successful=true
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:45:40) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:45:40', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:45:40')[0m
+Redirected to http://test.host/users/new?successful=true
+Completed in 54ms (DB: 1) | 302 Found [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:45:56) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:45:56', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:45:56')[0m
+Redirected to http://test.host/users/new?successful=true
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:47:37) [POST]
+  [4;36;1mUser Create (65.1ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:47:37', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:47:37')[0m
+Rendering users/create
+Completed in 120ms (View: 1, DB: 65) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#create (for 0.0.0.0 at 2010-07-24 16:52:46) [POST]
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("updated_at", "crypted_password", "username", "password_salt", "persistence_token", "email", "created_at") VALUES('2010-07-24 14:52:46', NULL, NULL, NULL, NULL, NULL, '2010-07-24 14:52:46')[0m
+Redirected to http://test.host/users/new?successful=true
+Completed in 53ms (DB: 1) | 302 Found [http://test.host/users]

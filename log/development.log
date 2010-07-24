@@ -48,3 +48,13 @@ Migrating to CreateUsers (20100724120528)
 [0m
   [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
   [4;35;1mSQL (1.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100724120528')[0m
+
+
+Processing HomepageController#index (for 127.0.0.1 at 2010-07-24 17:17:50) [GET]
+Rendering homepage/index
+Completed in 9ms (View: 7, DB: 0) | 200 OK [http://0.0.0.0/homepage]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-07-24 17:17:56) [GET]
+Rendering users/new
+Completed in 13ms (View: 11, DB: 0) | 200 OK [http://0.0.0.0/users/new]

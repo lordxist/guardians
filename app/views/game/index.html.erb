@@ -1,1 +1,10 @@
 <%= link_to "Logout", logout_path %>
+
+<p>
+  <strong><%= current_user.starship.name %></strong>
+</p>
+
+<p>
+  Position: <%= current_user.starship.position %> |
+  <%= Time.zone.now %>
+<p>

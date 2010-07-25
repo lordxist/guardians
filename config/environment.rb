@@ -42,3 +42,5 @@ Rails::Initializer.run do |config|
   config.gem "authlogic"
   config.gem "inherited_resources", :version => '1.0.6'
 end
+
+ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => "%H:%M")

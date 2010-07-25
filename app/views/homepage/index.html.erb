@@ -1,1 +1,17 @@
+<% form_for UserSession.new do |f| %>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  
+  <p>
+    <%= f.submit "Login" %>
+  </p>
+<% end %>
+
 <%= link_to "Register", new_user_path %>

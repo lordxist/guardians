@@ -44,3 +44,4 @@ Rails::Initializer.run do |config|
 end
 
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => "%H:%M")
+ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:countdown => "%M:%S")

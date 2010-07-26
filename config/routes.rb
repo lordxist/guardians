@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :starships
+
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
 
   map.resources :user_sessions

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'authlogic/test_case'
 
 describe UserSessionsController do
   setup :activate_authlogic
@@ -16,7 +15,7 @@ describe UserSessionsController do
   end
   
   it "'s destroy action redirects to the homepage if successful" do
-    UserSession.create Factory(:user)
+    create_user_session
     delete 'destroy'
     response.should redirect_to(root_path)
   end

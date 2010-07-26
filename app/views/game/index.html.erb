@@ -5,6 +5,42 @@
 </p>
 
 <p>
-  Position: <%= current_user.starship.position %> |
+<% if current_user.starship.arrival_time %>
+  Travelling to:
+<% else %>
+  Position:
+<% end %>
+  <%= current_user.starship.position %> |
   <%= Time.zone.now %>
 <p>
+
+<% if current_user.starship.arrival_time %>
+
+<p>
+  <strong>Travelling to: <%= current_user.starship.position %></strong>
+</p>
+
+<p>
+  Arrival in: <%= current_user.starship.arrival_in.to_s(:countdown) %>
+</p>
+
+<% else %>
+
+<h2>Travel to...</h2>
+<% form_for(current_user.starship) do |f| %>
+  <p>
+    <%= f.label :x_pos %><br />
+    <%= f.text_field :x_pos %>
+  </p>
+  
+  <p>
+    <%= f.label :y_pos %><br />
+    <%= f.text_field :y_pos %>
+  </p>
+
+  <p>
+    <%= f.submit 'Travel' %>
+  </p>
+<% end %>
+
+<% end %>

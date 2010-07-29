@@ -50,12 +50,6 @@ describe Starship do
     starship.arrival_time.should be_close(Time.zone.now + 100, 0.01)
   end
   
-  it "unsets arrival_time on update if arrived" do
-    starship = Factory(:starship, :arrival_time => Time.zone.now - 1)
-    starship.save!
-    starship.arrival_time.should be_nil
-  end
-  
   it "has a speed" do
     Factory(:starship).speed.should_not be_nil
   end
@@ -67,7 +61,8 @@ describe Starship do
   end
   
   it "'s arrival_in method returns nil if not travelling" do
-    Factory(:starship).arrival_in.should be_nil
+    starship = Factory(:starship, :arrival_time => Time.zone.now - 60)
+    starship.arrival_in.should be_nil
   end
   
   it "'s arrival_in method returns the correct time if travelling" do

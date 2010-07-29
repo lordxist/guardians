@@ -9,9 +9,4 @@ describe GameController do
     get 'index'
     response.should redirect_to(root_path)
   end
-
-  it "updates all starships before responding" do
-    Starship.any_instance.expects(:save)
-    get 'index'
-  end
 end

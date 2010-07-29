@@ -1,11 +1,6 @@
 class GameController < ApplicationController
-  before_filter :require_user, :update_starships
+  before_filter :require_user
 
   def index
-  end
-  
-  private
-  def update_starships
-    Starship.all.each { |s| s.save }
   end
 end

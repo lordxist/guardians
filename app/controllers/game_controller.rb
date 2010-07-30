@@ -1,5 +1,5 @@
-class GameController < ApplicationController
-  before_filter :require_user
+class GameController < GameAreaController
+  actions :none
 
   def index
   end

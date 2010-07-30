@@ -1,6 +1,4 @@
-class StarshipsController < InheritedResources::Base
-  before_filter :require_user
-
+class StarshipsController < GameAreaController
   actions :update
   
   update! do |format|

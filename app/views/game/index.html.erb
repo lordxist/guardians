@@ -1,48 +1,7 @@
 <%= link_to "Logout", logout_path %>
 
-<p>
-  <strong><%= current_user.starship.name %></strong>
-</p>
+<%= render :partial => "starships/show" %>
 
-<p>
-<% if current_user.starship.travelling? %>
-  Travelling to:
-<% else %>
-  Position:
-<% end %>
-  <%= current_user.starship.position %> |
-  <%= Time.zone.now %>
-<p>
-
-<% if current_user.starship.travelling? %>
-
-<p>
-  <strong>Travelling to: <%= current_user.starship.position %></strong>
-</p>
-
-<p>
-  Arrival in: <%= current_user.starship.arrival_in.to_s(:countdown) %>
-</p>
-
-<% else %>
-
-<h2>Travel to...</h2>
-<% form_for(current_user.starship) do |f| %>
-  <p>
-    <%= f.label :x_pos %><br />
-    <%= f.text_field :x_pos %>
-  </p>
-  
-  <p>
-    <%= f.label :y_pos %><br />
-    <%= f.text_field :y_pos %>
-  </p>
-
-  <p>
-    <%= f.submit 'Travel' %>
-  </p>
-<% end %>
+<%= render :partial => "starships/new_travel" %>
 
 <%= render :partial => "starships/index" %>
-
-<% end %>

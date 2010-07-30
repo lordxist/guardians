@@ -6,15 +6,27 @@ class Starship < ActiveRecord::Base
   before_update :check_travel_begin
   
   validates_presence_of :name, :x_pos, :y_pos, :speed
+  validate_on_update :no_position_change_when_travelling
   
   def arrival_in
-    if arrival_time.try(:future?)
+    if travelling?
       Time.zone.at(arrival_time - Time.zone.now)
+    end
+  end
+  
+  def no_position_change_when_travelling
+    if travelling?
+      errors.add(:x_pos, "musn't change when travelling") if x_pos_changed?
+      errors.add(:y_pos, "musn't change when travelling") if y_pos_changed?
     end
   end
   
   def position
     x_pos.to_s + "," + y_pos.to_s
+  end
+  
+  def travelling?
+    arrival_time.try(:future?)
   end
   
   private

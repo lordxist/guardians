@@ -5,7 +5,7 @@
 </p>
 
 <p>
-<% if current_user.starship.arrival_in %>
+<% if current_user.starship.travelling? %>
   Travelling to:
 <% else %>
   Position:
@@ -14,7 +14,7 @@
   <%= Time.zone.now %>
 <p>
 
-<% if current_user.starship.arrival_in %>
+<% if current_user.starship.travelling? %>
 
 <p>
   <strong>Travelling to: <%= current_user.starship.position %></strong>

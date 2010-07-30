@@ -25,9 +25,21 @@ describe Starship do
     starship.should_not be_valid
   end
   
+  it "'s x_pos may not be changed if travelling" do
+    starship = Factory(:starship, :arrival_time => Time.zone.now + 60)
+    starship.x_pos = 5
+    starship.should_not be_valid
+  end
+  
   it "'s y_pos is always present" do
     starship = Factory(:starship)
     starship.y_pos = nil
+    starship.should_not be_valid
+  end
+  
+  it "'s y_pos may not be changed if travelling" do
+    starship = Factory(:starship, :arrival_time => Time.zone.now + 60)
+    starship.y_pos = 5
     starship.should_not be_valid
   end
   
@@ -68,5 +80,20 @@ describe Starship do
   it "'s arrival_in method returns the correct time if travelling" do
     starship = Factory(:starship, :arrival_time => Time.zone.now + 30)
     starship.arrival_in.to_s(:countdown).should eql("00:29")
+  end
+  
+  it "'s travelling? method returns true if it indeed is" do
+    starship = Factory(:starship, :arrival_time => Time.zone.now + 60)
+    starship.travelling?.should be_true
+  end
+  
+  it "'s travelling? method returns false if arrival_time is past" do
+    starship = Factory(:starship, :arrival_time => Time.zone.now - 60)
+    starship.travelling?.should be_false
+  end
+  
+  it "'s travelling? method returns false if arrival_time is nil" do
+    starship = Factory(:starship)
+    starship.travelling?.should be_false
   end
 end

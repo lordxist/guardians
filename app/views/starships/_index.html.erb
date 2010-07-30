@@ -1,0 +1,12 @@
+<h2>Starships</h2>
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+  <% for starship in current_user.starship.starships_on_same_position %>
+    <tr>
+      <td><%= starship.name %></td>
+    </tr>
+  <% end %>
+</table>

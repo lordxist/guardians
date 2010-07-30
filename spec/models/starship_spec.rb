@@ -96,4 +96,11 @@ describe Starship do
     starship = Factory(:starship)
     starship.travelling?.should be_false
   end
+  
+  it "'s starships_on_same_position method returns the correct starships" do
+    starship = Factory(:starship)
+    starship2 = Factory(:starship)
+    starship3 = Factory(:starship, :x_pos => 1)
+    starship.starships_on_same_position.should eql([starship2])
+  end
 end

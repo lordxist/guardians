@@ -25,6 +25,12 @@ class Starship < ActiveRecord::Base
     x_pos.to_s + "," + y_pos.to_s
   end
   
+  def starships_on_same_position
+    starships = Starship.find_all_by_x_pos_and_y_pos(x_pos, y_pos)
+    starships.delete(self)
+    starships
+  end
+  
   def travelling?
     arrival_time.try(:future?)
   end
@@ -35,7 +41,8 @@ class Starship < ActiveRecord::Base
   end
   
   def add_position
-    self.attributes = {:x_pos => 0, :y_pos => 0}
+    self.x_pos = 0 unless x_pos
+    self.y_pos = 0 unless y_pos
   end
   
   def add_speed

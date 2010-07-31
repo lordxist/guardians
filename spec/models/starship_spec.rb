@@ -103,4 +103,13 @@ describe Starship do
     starship3 = Factory(:starship, :x_pos => 1)
     starship.starships_on_same_position.should eql([starship2])
   end
+  
+  it "'s planet_on_same_position method returns the correct planet" do
+    planet = Factory(:planet)
+    starship = Factory(:starship)
+    starship.planet_on_same_position.should eql(planet)
+    
+    starship2 = Factory(:starship, :arrival_time => Time.zone.now + 60)
+    starship2.planet_on_same_position.should be_nil
+  end
 end

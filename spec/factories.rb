@@ -7,3 +7,6 @@ end
 
 Factory.define :starship do
 end
+
+Factory.define :planet do
+end

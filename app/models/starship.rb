@@ -21,6 +21,12 @@ class Starship < ActiveRecord::Base
     end
   end
   
+  def planet_on_same_position
+    unless travelling?
+      Planet.find_by_x_pos_and_y_pos(x_pos, y_pos)
+    end
+  end
+  
   def position
     x_pos.to_s + "," + y_pos.to_s
   end

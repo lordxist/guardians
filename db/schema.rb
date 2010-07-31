@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100726131732) do
+ActiveRecord::Schema.define(:version => 20100731145210) do
+
+  create_table "planets", :force => true do |t|
+    t.string   "name"
+    t.integer  "x_pos"
+    t.integer  "y_pos"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "starships", :force => true do |t|
     t.integer  "user_id"

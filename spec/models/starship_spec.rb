@@ -112,4 +112,20 @@ describe Starship do
     starship2 = Factory(:starship, :arrival_time => Time.zone.now + 60)
     starship2.planet_on_same_position.should be_nil
   end
+  
+  it "has credits" do
+    Factory(:starship).credits.should_not be_nil
+  end
+  
+  it "has durasteel" do
+    Factory(:starship).durasteel.should_not be_nil
+  end
+  
+  it "has plasteel" do
+    Factory(:starship).plasteel.should_not be_nil
+  end
+  
+  it "has tibanna" do
+    Factory(:starship).tibanna.should_not be_nil
+  end
 end

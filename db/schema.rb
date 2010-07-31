@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100731145210) do
+ActiveRecord::Schema.define(:version => 20100731161900) do
 
   create_table "planets", :force => true do |t|
     t.string   "name"
@@ -17,6 +17,10 @@ ActiveRecord::Schema.define(:version => 20100731145210) do
     t.integer  "y_pos"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "credits",    :default => 0, :null => false
+    t.integer  "durasteel",  :default => 0, :null => false
+    t.integer  "plasteel",   :default => 0, :null => false
+    t.integer  "tibanna",    :default => 0, :null => false
   end
 
   create_table "starships", :force => true do |t|
@@ -28,6 +32,10 @@ ActiveRecord::Schema.define(:version => 20100731145210) do
     t.datetime "updated_at"
     t.datetime "arrival_time"
     t.integer  "speed"
+    t.integer  "credits",      :default => 0, :null => false
+    t.integer  "durasteel",    :default => 0, :null => false
+    t.integer  "plasteel",     :default => 0, :null => false
+    t.integer  "tibanna",      :default => 0, :null => false
   end
 
   create_table "users", :force => true do |t|

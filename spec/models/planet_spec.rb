@@ -29,5 +29,21 @@ describe Planet do
     planet = Factory(:planet, :y_pos => 5)
     planet.y_pos = 0
     planet.should_not be_valid
-  end  
+  end
+  
+  it "has credits" do
+    Factory(:planet).credits.should_not be_nil
+  end
+  
+  it "has durasteel" do
+    Factory(:planet).durasteel.should_not be_nil
+  end
+  
+  it "has plasteel" do
+    Factory(:planet).plasteel.should_not be_nil
+  end
+  
+  it "has tibanna" do
+    Factory(:planet).tibanna.should_not be_nil
+  end
 end

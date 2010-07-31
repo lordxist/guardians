@@ -10,3 +10,10 @@
 <% end %>
   | <%= Time.zone.now %>
 </p>
+
+<p>
+  Credits: <%= current_user.starship.credits %> |
+  Durasteel: <%= current_user.starship.durasteel %> |
+  Plasteel: <%= current_user.starship.plasteel %> |
+  Tibanna: <%= current_user.starship.tibanna %>
+</p>

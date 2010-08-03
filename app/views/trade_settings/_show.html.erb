@@ -1,0 +1,41 @@
+<% if current_user.starship.buying_durasteel > 0 %>
+<p>
+  Buying durasteel up to a supply of <%= current_user.starship.buying_durasteel %>
+  - Price: <%= current_user.starship.buying_durasteel_price %> cr.
+</p>
+<% end %>
+
+<% if current_user.starship.buying_plasteel > 0 %>
+<p>
+  Buying plasteel up to a supply of <%= current_user.starship.buying_plasteel %>
+  - Price: <%= current_user.starship.buying_plasteel_price %> cr.
+</p>
+<% end %>
+
+<% if current_user.starship.buying_tibanna > 0 %>
+<p>
+  Buying tibanna up to a supply of <%= current_user.starship.buying_tibanna %>
+  - Price: <%= current_user.starship.buying_tibanna_price %> cr.
+</p>
+<% end %>
+
+<% if current_user.starship.selling_durasteel > 0 %>
+<p>
+  Selling durasteel up to a supply of <%= current_user.starship.selling_durasteel %>
+  - Price: <%= current_user.starship.selling_durasteel_price %> cr.
+</p>
+<% end %>
+
+<% if current_user.starship.selling_plasteel > 0 %>
+<p>
+  Selling plasteel up to a supply of <%= current_user.starship.selling_plasteel %>
+  - Price: <%= current_user.starship.selling_plasteel_price %> cr.
+</p>
+<% end %>
+
+<% if current_user.starship.selling_tibanna > 0 %>
+<p>
+  Selling tibanna up to a supply of <%= current_user.starship.selling_tibanna %>
+  - Price: <%= current_user.starship.selling_tibanna_price %> cr.
+</p>
+<% end %>

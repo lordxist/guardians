@@ -9,4 +9,8 @@ describe GameController do
     get 'index'
     response.should redirect_to(root_path)
   end
+  
+  it "updates all starships before index" do
+    should_update_all_starships_before 'index'
+  end
 end

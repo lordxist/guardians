@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100802131329) do
+ActiveRecord::Schema.define(:version => 20100803123630) do
 
   create_table "planets", :force => true do |t|
     t.string   "name"
@@ -17,10 +17,22 @@ ActiveRecord::Schema.define(:version => 20100802131329) do
     t.integer  "y_pos"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "credits",    :default => 0, :null => false
-    t.integer  "durasteel",  :default => 0, :null => false
-    t.integer  "plasteel",   :default => 0, :null => false
-    t.integer  "tibanna",    :default => 0, :null => false
+    t.integer  "credits",                 :default => 0, :null => false
+    t.integer  "durasteel",               :default => 0, :null => false
+    t.integer  "plasteel",                :default => 0, :null => false
+    t.integer  "tibanna",                 :default => 0, :null => false
+    t.integer  "buying_durasteel",        :default => 0, :null => false
+    t.integer  "buying_plasteel",         :default => 0, :null => false
+    t.integer  "buying_tibanna",          :default => 0, :null => false
+    t.integer  "selling_durasteel",       :default => 0, :null => false
+    t.integer  "selling_plasteel",        :default => 0, :null => false
+    t.integer  "selling_tibanna",         :default => 0, :null => false
+    t.integer  "selling_durasteel_price", :default => 1, :null => false
+    t.integer  "selling_plasteel_price",  :default => 1, :null => false
+    t.integer  "selling_tibanna_price",   :default => 1, :null => false
+    t.integer  "buying_durasteel_price",  :default => 1, :null => false
+    t.integer  "buying_plasteel_price",   :default => 1, :null => false
+    t.integer  "buying_tibanna_price",    :default => 1, :null => false
   end
 
   create_table "starships", :force => true do |t|

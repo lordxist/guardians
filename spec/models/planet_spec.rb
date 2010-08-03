@@ -46,4 +46,6 @@ describe Planet do
   it "has tibanna" do
     Factory(:planet).tibanna.should_not be_nil
   end
+  
+  it_trades_correctly(:planet)
 end

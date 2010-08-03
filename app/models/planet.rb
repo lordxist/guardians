@@ -1,7 +1,14 @@
+require 'lib/trade'
 class Planet < ActiveRecord::Base
+  include Trade
+  
   before_validation_on_create :add_name, :add_position
   
   validate_on_update :no_name_change, :no_position_change
+  
+  def starships_on_same_position
+    starships = Starship.find_all_by_x_pos_and_y_pos(x_pos, y_pos)
+  end
   
   private
   def add_name

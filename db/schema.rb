@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803123630) do
+ActiveRecord::Schema.define(:version => 20100902123817) do
 
   create_table "planets", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(:version => 20100803123630) do
     t.integer  "buying_durasteel_price",  :default => 1, :null => false
     t.integer  "buying_plasteel_price",   :default => 1, :null => false
     t.integer  "buying_tibanna_price",    :default => 1, :null => false
+  end
+
+  create_table "travels", :force => true do |t|
+    t.integer  "x_start"
+    t.integer  "y_start"
+    t.integer  "x_dest"
+    t.integer  "y_dest"
+    t.datetime "arrival_time"
+    t.integer  "starship_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "speed"
   end
 
   create_table "users", :force => true do |t|

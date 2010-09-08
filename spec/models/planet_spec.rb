@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe Planet do
+  it "requires a name" do
+    planet = Factory :planet
+    planet.name = nil
+    planet.should_not be_valid
+  end
+  
+  it "requires an x_pos" do
+    planet = Factory :planet
+    planet.x_pos = nil
+    planet.should_not be_valid
+  end
+  
+  it "requires a y_pos" do
+    planet = Factory :planet
+    planet.y_pos = nil
+    planet.should_not be_valid
+  end
+=begin
   it "has a name" do
     Factory(:planet).name.should_not be_nil
   end
@@ -48,4 +66,5 @@ describe Planet do
   end
   
   it_trades_correctly(:planet)
+=end
 end

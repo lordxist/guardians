@@ -1,6 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resource :starsystem, :only => :show
+  map.game "game", :controller => "starsystems", :action => "show"
+
+  map.resources :trade_settings, :singular => :trade_settings
+  map.resource :travel
+  map.resources :planets
   map.resources :starships
 
+  map.signup "signup", :controller => "users", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
 
   map.resources :user_sessions

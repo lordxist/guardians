@@ -1,22 +1,20 @@
 require 'spec_helper'
 
-describe UserSessionsController do
-  setup :activate_authlogic
-
-  it "'s create action redirects to the game page if successful" do
+describe UserSessionsController do  
+  it "create action redirects to the game page when successful" do
     UserSession.any_instance.stubs(:save).returns(true)
-    post 'create'
-    response.should redirect_to(:controller => 'game')
+    post :create
+    response.should redirect_to(game_path)
   end
   
-  it "'s create action redirects to the homepage if unsuccessful" do
-    post 'create'
+  it "create action redirects to the homepage when unsuccessful" do
+    post :create
     response.should redirect_to(root_path)
   end
   
-  it "'s destroy action redirects to the homepage if successful" do
-    create_user_session
-    delete 'destroy'
+  it "destroy action redirects to the homepage" do
+    NilClass.any_instance.stubs(:destroy).returns(true)
+    delete :destroy
     response.should redirect_to(root_path)
   end
 end

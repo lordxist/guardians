@@ -1,11 +1,18 @@
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.
+
 ENV["RAILS_ENV"] ||= 'test'
+
 require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environment'))
 require 'spec/autorun'
 require 'spec/rails'
 
 require 'authlogic/test_case'
+
+require 'rubygems'
+silence_stream STDERR do
+  require 'acts_as_fu'
+end
 
 # Uncomment the next line to use webrat's matchers
 #require 'webrat/integrations/rspec-rails'
@@ -53,4 +60,6 @@ Spec::Runner.configure do |config|
   # == Notes
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
+  
+  config.include ActsAsFu
 end

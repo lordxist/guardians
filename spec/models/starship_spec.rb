@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Starship do
+=begin
   it "has a name" do
     Factory(:starship).name.should_not be_nil
   end
@@ -12,28 +13,67 @@ describe Starship do
   it "has a y_pos" do
     Factory(:starship).y_pos.should_not be_nil
   end
-  
-  it "'s name is always present" do
-    starship = Factory(:starship)
-    starship.name = nil
-    starship.should_not be_valid
+=end
+  it "requires a name" do
+    lambda { Factory(:starship, :name => nil) }.should raise_exception
   end
   
-  it "'s x_pos is always present" do
-    starship = Factory(:starship)
-    starship.x_pos = nil
-    starship.should_not be_valid
+  it "requires an x_pos" do
+    lambda { Factory(:starship, :x_pos => nil) }.should raise_exception
   end
   
+  it "requires a y_pos" do
+    lambda { Factory(:starship, :y_pos => nil) }.should raise_exception
+  end
+  
+  it "returns a starsystem" do
+    Factory(:starship).starsystem.should be_kind_of(Starsystem)
+  end
+  
+  it "returns the other starships on its position" do
+    starship = Factory(:starship)
+    starship2 = Factory(:starship)
+    starship3 = Factory(:starship)
+    starship.starships_on_same_position.should eql([starship2, starship3])
+  end
+  
+  it "updates related game objects" do
+    starship = Factory(:starship)
+    Factory(:starship)
+    Starship.any_instance.expects(:save).times(2)
+    starship.update_related_game_objects
+  end
+  
+  it "doesn't update unrelated game objects" do
+    starship = Factory(:starship)
+    Factory(:starship, :x_pos => 1)
+    Starship.any_instance.expects(:save)
+    starship.update_related_game_objects
+  end
+  
+  it "creates a travel when its x_pos is changed" do
+    starship = Factory(:starship)
+    starship.update_attributes(:x_pos => 50)
+    starship.travel.should_not be_nil
+  end
+  
+  it "creates a travel when its y_pos is changed" do
+    starship = Factory(:starship)
+    starship.update_attributes(:y_pos => 50)
+    starship.travel.should_not be_nil
+  end
+  
+  it "destroys its travel when it has ended" do
+    starship = Factory(:starship)
+    starship.update_attributes(:x_pos => 50)
+    starship.travel.stubs(:ended?).returns(true)
+    starship.save
+    starship.travel.should be_nil
+  end
+=begin
   it "'s x_pos may not be changed if travelling" do
     starship = Factory(:starship, :arrival_time => Time.zone.now + 60)
     starship.x_pos = 5
-    starship.should_not be_valid
-  end
-  
-  it "'s y_pos is always present" do
-    starship = Factory(:starship)
-    starship.y_pos = nil
     starship.should_not be_valid
   end
   
@@ -117,4 +157,5 @@ describe Starship do
   end
   
   it_trades_correctly(:starship)
+=end
 end

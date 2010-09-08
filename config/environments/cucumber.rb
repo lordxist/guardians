@@ -25,3 +25,21 @@ config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.2' unless File.
 config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
 config.gem 'webrat',           :lib => false, :version => '>=0.7.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
 config.gem "thoughtbot-factory_girl", :lib => "factory_girl", :source => "http://gems.github.com"
+
+class RackRailsCookieHeaderHack
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    status, headers, body = @app.call(env)
+    if headers['Set-Cookie'] && headers['Set-Cookie'].respond_to?(:collect!)
+      headers['Set-Cookie'].collect! { |h| h.strip }
+    end
+    [status, headers, body]
+  end
+end
+
+config.after_initialize do
+  ActionController::Dispatcher.middleware.insert_before(ActionController::Base.session_store, RackRailsCookieHeaderHack)
+end

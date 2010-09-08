@@ -1,8 +1,8 @@
 <h1>Register</h1>
 
-<% if params[:successful] %>
+<% if flash[:notice] %>
 
-<p>Registration successful.</p>
+<p><%= flash[:notice] %></p>
 
 <% else %>
 
@@ -30,7 +30,7 @@
   </p>
 
   <p>
-    <%= f.submit 'Register' %>
+    <%= f.submit 'Sign Up' %>
   </p>
 <% end %>
 

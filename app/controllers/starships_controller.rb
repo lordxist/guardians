@@ -1,10 +1,15 @@
 class StarshipsController < GameAreaController
+  defaults :singleton => true
   actions :update
+    
+  helper_method :current_starship
   
-  def update
-    @starship = current_user.starship
-    update! do |format|
-      format.html { redirect_to :controller => "game" }
-    end
+  update! do |format|
+    format.html { redirect_to game_url }
+  end
+  
+  protected  
+  def resource
+    current_starship
   end
 end

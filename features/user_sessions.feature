@@ -1,5 +1,4 @@
 Feature: User Sessions
-  In order to make a game
   As a user
   I want to log in and log out
   

@@ -3,10 +3,5 @@ class User < ActiveRecord::Base
   
   has_one :starship
   
-  before_validation_on_create :add_starship
-  
-  private
-  def add_starship
-    self.starship = Starship.create
-  end
+  validates_presence_of :starship
 end

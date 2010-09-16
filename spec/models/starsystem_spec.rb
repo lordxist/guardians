@@ -1,14 +1,11 @@
 require 'spec_helper'
 
 describe Starsystem do
-  it "has a name including at least its coordinates" do
-    starsystem = Starsystem.at(0, 0)
-    starsystem.name.should include("0,0")
-  end
-  
-  it "has a name including its planet's name when it has one" do
-    Factory(:planet, :name => "MyPlanet", :x_pos => 0, :y_pos => 0)
-    starsystem = Starsystem.at(0, 0)
-    starsystem.name.should include("MyPlanet")
+  it "has a name according to its coordinates" do
+    starsystem = Starsystem.at_coords(0, 0)
+    starsystem.name.should eql("(0,0)")
+
+    starsystem = Starsystem.at_coords(0, 100)
+    starsystem.name.should eql("(0,100)")
   end
 end

@@ -1,11 +1,11 @@
-<% form_for UserSession.new do |f| %>
+<%= form_for UserSession.new do |f| %>
   <p>
     <%= f.label :username %>
     <%= f.text_field :username %>
 
     <%= f.label :password %>
     <%= f.password_field :password %>
-  
+
     <%= f.submit "Login" %>
   </p>
 <% end %>

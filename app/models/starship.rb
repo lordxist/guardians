@@ -1,37 +1,63 @@
+require 'core_ext/trade'
 class Starship < ActiveRecord::Base
   acts_as_positioned2d
   
   has_one :travel
+
+  before_create :set_position, :set_supply_and_trade_settings
+  before_update :check_if_travel_ended
   
-  validates_presence_of :name, :x_pos, :y_pos
+  validates :x_coord, :y_coord, :no_manual_changes => true
   
-  before_update :check_travel
-  
-  def starsystem
-    Starsystem.at(x_pos, y_pos)
+  alias_method :build_travel_without_defaults, :build_travel
+  def build_travel(options = {})
+    options.merge!(:x_start => x_coord, :y_start => y_coord)
+    build_travel_without_defaults(options)
   end
   
   def starships_on_same_position
-    starsystem.starships - [self]
+    starsystem.starships - [ self ]
+  end
+
+  def starsystem
+    Starsystem.at_coords(x_coord, y_coord)
   end
   
-  def update_related_game_objects
-    starsystem.starships.each { |s| s.save }
+  def trade_partners
+    starships_on_same_position
+  end
+  buys :durasteel
+  
+  alias_method :travel_without_build_alternative, :travel
+  def travel
+    travel_without_build_alternative || build_travel
   end
   
   private
-  def check_travel
-    create_travel(
-      :x_start => x_pos_was,
-      :y_start => y_pos_was,
-      :x_dest => x_pos,
-      :y_dest => y_pos,
-      :speed => speed
-    ) if x_pos_changed? || y_pos_changed?
-    
-    if travel && travel.ended?
+  def check_if_travel_ended
+    if travel_without_build_alternative.try(:ended?)
+      self.attributes = {
+        :x_coord => travel.x_dest,
+        :y_coord => travel.y_dest,
+      }
       travel.destroy
-      reload
     end
+  end
+
+  def set_position
+    (x_coord && y_coord) || self.attributes = {
+      :x_coord => 0,
+      :y_coord => 0
+    }
+  end
+
+  def set_supply_and_trade_settings
+    self.attributes = {
+      :durasteel => 0,
+      :buying_durasteel => 0,
+      :buying_durasteel_price => 10,
+      :selling_durasteel => 0,
+      :selling_durasteel_price => 10
+    }
   end
 end

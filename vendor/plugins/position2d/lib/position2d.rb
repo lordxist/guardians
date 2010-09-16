@@ -8,7 +8,7 @@ end
 
 module Position2D
   class Base
-    def self.at(x_coord, y_coord)
+    def self.at_coords(x_coord, y_coord)
       @position ||= {}
       @position[:x_coord => x_coord,
                 :y_coord => y_coord] ||= new(x_coord, y_coord)
@@ -30,7 +30,7 @@ module Position2D
     private
     def method_missing(method_symbol, *args)
       singular_name = method_symbol.to_s.singularize
-      list = singular_name.camelize.constantize.at(x_coord, y_coord)
+      list = singular_name.camelize.constantize.at_coords(x_coord, y_coord)
       return list unless singular_name.eql?(method_symbol.to_s)
       list[0]
     end

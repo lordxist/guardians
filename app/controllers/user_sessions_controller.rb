@@ -1,12 +1,15 @@
 class UserSessionsController < InheritedResources::Base
   actions :create, :destroy
-  
-  create! do |success, failure|
-    success.html { redirect_to game_url }
-    failure.html { redirect_to root_url }
+
+  def create
+    create! do |format|
+      format.html { redirect_to game_url }
+    end
   end
-  
-  destroy! do |format|
-    format.html { redirect_to root_url }
+
+  def destroy
+    destroy! do |success, failure|
+      success.html { redirect_to root_url }
+    end
   end
 end

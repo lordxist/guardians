@@ -1,0 +1,37 @@
+<% if @travel.new_record? %>
+
+<h2>Travel to...</h2>
+<%= form_for(@travel, :url => game_travel_url) do |f| %>
+  <p>
+    <%= f.label :x_dest %><br />
+    <%= f.text_field :x_dest %>
+  </p>
+
+  <p>
+    <%= f.label :y_dest %><br />
+    <%= f.text_field :y_dest %>
+  </p>
+
+  <p>
+    <%= f.hidden_field :starship_id %>
+    <%= f.hidden_field :x_start %>
+    <%= f.hidden_field :y_start %>
+  </p>
+  
+  <p>
+    <%= f.submit 'Travel' %>
+  </p>
+<% end %>
+
+
+<% else %>
+
+<p>
+  <strong>Travelling to: <%= @travel.destination.name %></strong>
+</p>
+
+<p>
+  Arrival in: <%= @travel.arrival_in.to_s(:countdown) %>
+</p>
+
+<% end %>

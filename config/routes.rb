@@ -5,12 +5,10 @@ GuardiansRails3MigrationApp::Application.routes.draw do
   resources :user_sessions
   resources :users
   
-  match 'game' => 'game/starsystems#show'
-  namespace :game do
-    resource :travel
-    match 'trade_settings' => 'trade_settings#show'
-  end
-
+  match 'game' => 'starsystems#show'
+  match 'travel' => 'travels#show'
+  resources :travels, :only => 'create'
+  match 'trade_settings' => 'trade_settings#show'
   resources :starships
   
   # The priority is based upon order of creation:

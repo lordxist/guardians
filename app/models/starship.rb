@@ -1,11 +1,13 @@
-require 'core_ext/trade'
+require 'trade'
 class Starship < ActiveRecord::Base
+  include Trade
+  
   acts_as_positioned2d
   
   has_one :travel
 
   before_create :set_position, :set_supply_and_trade_settings
-  before_update :check_if_travel_ended
+  before_update :buy_durasteel, :check_if_travel_ended
   
   validates :x_coord, :y_coord, :no_manual_changes => true
   
@@ -18,7 +20,7 @@ class Starship < ActiveRecord::Base
   def starships_on_same_position
     starsystem.starships - [ self ]
   end
-
+  
   def starsystem
     Starsystem.at_coords(x_coord, y_coord)
   end
@@ -26,16 +28,10 @@ class Starship < ActiveRecord::Base
   def trade_partners
     starships_on_same_position
   end
-  buys :durasteel
-  
-  alias_method :travel_without_build_alternative, :travel
-  def travel
-    travel_without_build_alternative || build_travel
-  end
   
   private
   def check_if_travel_ended
-    if travel_without_build_alternative.try(:ended?)
+    if travel.try(:ended?)
       self.attributes = {
         :x_coord => travel.x_dest,
         :y_coord => travel.y_dest,

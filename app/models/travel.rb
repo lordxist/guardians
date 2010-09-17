@@ -9,7 +9,7 @@ class Travel < ActiveRecord::Base
   end
 
   def arrival_time
-    Time.zone.now +
+    created_at +
       Point2D.new(x_start, y_start).unidimensional_distances_sum(x_dest, y_dest)
   end
 

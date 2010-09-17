@@ -1,5 +1,5 @@
 class GameBaseController < InheritedResources::Base
-  before_filter :require_user
+  before_filter :require_user, :update_game_objects
   
   layout 'game'
     
@@ -12,5 +12,10 @@ class GameBaseController < InheritedResources::Base
 
   def current_starship
     current_user.starship
+  end
+
+  private
+  def update_game_objects
+    Starship.all.each {|s| s.save }
   end
 end

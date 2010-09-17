@@ -27,6 +27,7 @@ class Starship < ActiveRecord::Base
   end
   
   def trade_partners
+    return [] if travel
     starships_on_same_position
   end
   
@@ -51,14 +52,16 @@ class Starship < ActiveRecord::Base
   def set_supply_and_trade_settings
     attr = {}
     ["durasteel", "plasteel", "tibanna"].each do |type|
-      attr.merge!({
+      attr.merge!(
         type => 0,
         "buying_#{type}" => 0,
         "buying_#{type}_price" => 10,
         "selling_#{type}" => 0,
-        "selling_#{type}_price" => 10
-      })
+        "selling_#{type}_price" => 10,
+        "enable_selling_#{type}" => false
+      )
     end
+    attr.merge!(:credits => 100)
     self.attributes = attr
   end
 end

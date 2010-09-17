@@ -25,10 +25,17 @@ module Trade
         if new_partner_supply < partner.selling(type)
           new_partner_supply = partner.read_attribute(type)
         end
-
-        new_supply += partner.read_attribute(type) - new_partner_supply
-        partner.update_attributes(type => new_partner_supply)
+        
+        bought = partner.read_attribute(type) - new_partner_supply
+        new_supply += bought
+        self.credits -= bought * partner.selling_price(type)
+        new_partner_credits = partner.credits +
+          bought * partner.selling_price(type)
+        partner.update_attributes(type => new_partner_supply,
+          :credits => new_partner_credits)
       end
+
+      self.attributes = {type => new_supply}
     end
 
     def buying(type)
@@ -47,14 +54,29 @@ module Trade
       read_attribute("selling_#{type}_price")
     end
 
+    def buying_amount(type)
+      return 0 if buying(type) < read_attribute(type)
+      buying(type) - read_attribute(type)
+    end
+
+    def selling_amount(type)
+      return 0 if selling(type) > read_attribute(type)
+      read_attribute(type) - selling(type)
+    end
+
     def buying?(type)
       buying(type) > read_attribute(type)
     end
 
     def selling?(type)
+      return false unless selling_enabled?(type)
       read_attribute(type) > selling(type)
     end
-
+    
+    def selling_enabled?(type)
+      read_attribute("enable_selling_#{type}")
+    end
+    
     def method_missing(method_symbol, *args)
       arr = method_symbol.to_s.split('_')
       return buy(arr[1].to_sym) if arr.length.eql?(2) && arr[0].eql?("buy")

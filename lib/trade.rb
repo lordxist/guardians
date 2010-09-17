@@ -20,9 +20,9 @@ module Trade
       for partner in trade_partners
         return unless buying?(type)
 
-       new_partner_supply = partner.read_attribute(type) -
-         (buying(type) - new_supply)
-       if new_partner_supply < partner.selling(type)
+        new_partner_supply = partner.read_attribute(type) -
+          (buying(type) - new_supply)
+        if new_partner_supply < partner.selling(type)
           new_partner_supply = partner.read_attribute(type)
         end
 

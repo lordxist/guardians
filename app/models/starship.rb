@@ -7,7 +7,8 @@ class Starship < ActiveRecord::Base
   has_one :travel
 
   before_create :set_position, :set_supply_and_trade_settings
-  before_update :buy_durasteel, :check_if_travel_ended
+  before_update :buy_durasteel, :buy_plasteel, :buy_tibanna
+  before_update :check_if_travel_ended
   
   validates :x_coord, :y_coord, :no_manual_changes => true
   
@@ -48,12 +49,16 @@ class Starship < ActiveRecord::Base
   end
 
   def set_supply_and_trade_settings
-    self.attributes = {
-      :durasteel => 0,
-      :buying_durasteel => 0,
-      :buying_durasteel_price => 10,
-      :selling_durasteel => 0,
-      :selling_durasteel_price => 10
-    }
+    attr = {}
+    ["durasteel", "plasteel", "tibanna"].each do |type|
+      attr.merge!({
+        type => 0,
+        "buying_#{type}" => 0,
+        "buying_#{type}_price" => 10,
+        "selling_#{type}" => 0,
+        "selling_#{type}_price" => 10
+      })
+    end
+    self.attributes = attr
   end
 end

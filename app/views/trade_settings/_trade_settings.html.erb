@@ -1,0 +1,35 @@
+<%= form_for(current_starship) do |f| %>
+  <p>
+    <%= f.label "selling_#{type}" %><br />
+    <%= f.text_field "selling_#{type}" %>
+  </p>
+
+  <p>
+    <%= f.label "selling_#{type}_price" %><br />
+    <%= f.text_field "selling_#{type}_price" %>
+  </p>
+
+  <p>
+    <%= f.label "buying_#{type}" %><br />
+    <%= f.text_field "buying_#{type}" %>
+  </p>
+
+  <p>
+    <%= f.label "buying_#{type}_price" %><br />
+    <%= f.text_field "buying_#{type}_price" %>
+  </p>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<p>
+  Buying durasteel up to a supply of <%= current_starship.buying(type) %>
+  à <%= current_starship.buying_price(type) %> cr. max.
+</p>
+
+<p>
+  Selling durasteel up to a supply of <%= current_starship.selling(type) %>
+  à <%= current_starship.selling_price(type) %> cr.
+</p>

@@ -1,35 +1,3 @@
-<%= form_for(current_starship) do |f| %>
-  <p>
-    <%= f.label :selling_durasteel %><br />
-    <%= f.text_field :selling_durasteel %>
-  </p>
-
-  <p>
-    <%= f.label :selling_durasteel_price %><br />
-    <%= f.text_field :selling_durasteel_price %>
-  </p>
-
-  <p>
-    <%= f.label :buying_durasteel %><br />
-    <%= f.text_field :buying_durasteel %>
-  </p>
-
-  <p>
-    <%= f.label :buying_durasteel_price %><br />
-    <%= f.text_field :buying_durasteel_price %>
-  </p>
-  
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+<% for type in %w(durasteel plasteel tibanna) %>
+  <%= render :partial => "trade_settings", :locals => { :type => type } %>
 <% end %>
-
-<p>
-  Buying durasteel up to a supply of <%= current_starship.buying_durasteel %>
-  à <%= current_starship.buying_durasteel_price %> cr. max.
-</p>
-
-<p>
-  Selling durasteel up to a supply of <%= current_starship.selling_durasteel %>
-  à <%= current_starship.selling_durasteel_price %> cr.
-</p>

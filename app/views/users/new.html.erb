@@ -1,3 +1,4 @@
+<div id="sign_up_page">
 <h1>Sign Up</h1>
 
 <% if flash[:notice] %>
@@ -30,10 +31,11 @@
   </p>
 
   <p>
-    <%= f.submit 'Sign Up' %>
+    <%= f.submit 'Sign Up', :id => "sign_up" %>
   </p>
 <% end %>
 
 <% end %>
 
 <%= link_to 'Back', root_url %>
+</div>

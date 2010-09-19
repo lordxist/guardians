@@ -1,9 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GuardiansRails3MigrationApp</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="logout">
 <%= link_to "Logout", logout_path %>
+</div>
+
+<img src="/images/logo.png" alt="" />
 
 <%= render :partial => current_starship %>
 
+<div id="tabs">
 <%= link_to "Overview", game_path %>
 <%= link_to "Travel", travel_path %>
 <%= link_to "Trade", trade_settings_path %>
+</div>
 
+<div id="main_content">
 <%= yield %>
+</div>
+
+</body>
+</html>

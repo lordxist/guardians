@@ -1,35 +1,14 @@
-<%= form_for(current_starship) do |f| %>
-  <p>
-    <%= f.label "selling_#{type}" %><br />
-    <%= f.text_field "selling_#{type}" %>
-  </p>
-
-  <p>
-    <%= f.label "selling_#{type}_price" %><br />
-    <%= f.text_field "selling_#{type}_price" %>
-  </p>
-
-  <p>
-    <%= f.label "buying_#{type}" %><br />
-    <%= f.text_field "buying_#{type}" %>
-  </p>
-
-  <p>
-    <%= f.label "buying_#{type}_price" %><br />
-    <%= f.text_field "buying_#{type}_price" %>
-  </p>
-
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
+<div id="trade_setting">
 <p>
-  Buying durasteel up to a supply of <%= current_starship.buying(type) %>
-  à <%= current_starship.buying_price(type) %> cr. max.
+  Selling <%= type %> downto a supply of
+  <%= f.text_field "selling_#{type}", :maxlength => 3 %>
+  à <%= f.text_field "selling_#{type}_price", :maxlength => 3 %> cr.
+  <%= f.check_box "enable_selling_#{type}" %> enabled
 </p>
 
 <p>
-  Selling durasteel up to a supply of <%= current_starship.selling(type) %>
-  à <%= current_starship.selling_price(type) %> cr.
+  Buying <%= type %> upto a supply of
+  <%= f.text_field "buying_#{type}", :maxlength => 3 %>
+  à <%= f.text_field "buying_#{type}_price", :maxlength => 3 %> cr.
 </p>
+</div>

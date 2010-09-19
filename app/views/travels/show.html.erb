@@ -13,16 +13,10 @@
 <h2>Travel to...</h2>
 <%= form_for(Travel.new) do |f| %>
   <p>
-    <%= f.label :x_dest %><br />
-    <%= f.text_field :x_dest %>
-  </p>
-
-  <p>
-    <%= f.label :y_dest %><br />
-    <%= f.text_field :y_dest %>
-  </p>
-
-  <p>
+    <%= f.label :x_dest %>
+    <%= f.text_field :x_dest, :maxlength => 3 %>
+    <%= f.label :y_dest %>
+    <%= f.text_field :y_dest, :maxlength => 3 %>
     <%= f.submit 'Travel' %>
   </p>
 <% end %>

@@ -1,3 +1,9 @@
-<% for type in %w(durasteel plasteel tibanna) %>
-  <%= render :partial => "trade_settings", :locals => { :type => type } %>
+<%= form_for(current_starship) do |f| %>
+  <% for type in %w(durasteel plasteel tibanna) %>
+  <%= render :partial => "trade_settings", :locals => { :type => type, :f => f } %>
+  <% end %>
+  
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
 <% end %>

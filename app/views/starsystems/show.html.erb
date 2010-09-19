@@ -1,28 +1,30 @@
-<h2>Starships</h2>
+<h2>Starship List</h2>
 <table>
   <tr>
     <th>Name</th>
+    <th>Selling</th>
+    <th>Buying</th>
   </tr>
 
   <% for starship in current_starship.starships_on_same_position %>
     <tr>
-      <td>Name</td>
-      <td>Selling durasteel</td>
-      <td>Selling plasteel</td>
-      <td>Selling tibanna</td>
-      <td>Buying durasteel</td>
-      <td>Buying plasteel</td>
-      <td>Buying tibanna</td>
-    </tr>
-    
-    <tr>
       <td><%= starship.name %></td>
-      <td><%= starship.selling_amount('durasteel') %></td>
-      <td><%= starship.selling_amount('plasteel') %></td>
-      <td><%= starship.selling_amount('tibanna') %></td>
-      <td><%= starship.buying_amount('durasteel') %></td>
-      <td><%= starship.buying_amount('plasteel') %></td>
-      <td><%= starship.buying_amount('tibanna') %></td>
+      <td>
+      <% for type in %w(durasteel plasteel tibanna) %>
+      <% unless starship.selling_amount(type).eql?(0) %>
+      <%= type %>:
+      <%= starship.selling_amount(type)  %>
+      <% end %>
+      <% end %>
+      </td>
+      <td>
+      <% for type in %w(durasteel plasteel tibanna) %>
+      <% unless starship.buying_amount(type).eql?(0) %>
+      <%= type %>:
+      <%= starship.buying_amount(type)  %>
+      <% end %>
+      <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

@@ -1,0 +1,79 @@
+#logout {
+  background:url(/images/login_bg.png);
+  border-bottom:1px solid #555;
+  color:black;
+  height:27px;
+  width:700px;
+}
+
+#logout a {
+  background-color:#f0f0f0;
+  border:1px solid gray;
+  color:#000;
+  float:right;
+  font-size:10px;
+  height:14px;
+  margin-top:3px;
+  margin-right:10px;
+  padding-bottom: 1px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 2px;
+  text-decoration:none;
+}
+
+#starship {
+  border:1px solid gray;
+  background:#777;
+}
+
+#starship p {
+  border-bottom:1px solid #333;
+  font-size:10px;
+}
+
+#starship p strong {
+  font-size:12px;
+}
+
+#tabs {
+  background:#aaa;
+}
+
+#tabs a {
+  border-right:1px solid #333;
+  color:#000;
+  font-size:12px;
+  padding-right:10px;
+  text-decoration:none;
+}
+
+#main_content {
+  background:#777;
+  border:1px solid #333;
+  font-size:10px;
+  margin:20px;
+  padding:10px;
+  padding-top:0;
+}
+
+#main_content h2 {
+  font-size:14px;
+}
+
+#main_content table {
+  border-collapse:collapse;
+}
+
+#main_content td, #main_content th {
+  border:1px solid #fff;
+  width:150px;
+}
+
+#main_content th {
+  font-size:10px;
+}
+
+#trade_setting {
+  border-bottom:1px solid #333;
+}

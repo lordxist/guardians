@@ -5,7 +5,7 @@ module Trade
       include InstanceMethods
     end
   end
-
+  
   module InstanceMethods
     def buy(type)
       return unless buying?(type)

@@ -19,11 +19,7 @@ describe Starship do
     travel.x_start.should eql(1)
     travel.y_start.should eql(2)
   end
-
-  it "returns a newbuilt travel if it has none" do
-    Factory(:starship).travel.should be_kind_of(Travel)
-  end
-
+  
   it "destroys the travel after it has ended" do
     starship = Factory(:starship)
     travel = Factory(:travel)
@@ -41,5 +37,11 @@ describe Starship do
     starship.save
     starship.x_coord.should eql(10)
     starship.y_coord.should eql(20)
+  end
+
+  it "returns an empty array for its trade partners when travelling" do
+    starship = Factory(:starship)
+    starship.build_travel
+    starship.trade_partners.should be_empty
   end
 end

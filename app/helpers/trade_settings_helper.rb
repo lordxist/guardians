@@ -1,0 +1,2 @@
+module TradeSettingsHelper
+end

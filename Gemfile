@@ -41,7 +41,7 @@ end
 group :cucumber do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', '0.3.2'
   gem 'cucumber'
   gem 'rspec-rails', :git => 'git://github.com/rspec/rspec-rails', :ref => '2ddb0778dfe9e016cd4b3ae3245d9b08a8f4b60c'
   gem 'spork'

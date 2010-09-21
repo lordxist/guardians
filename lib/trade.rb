@@ -29,6 +29,7 @@ module Trade
         bought = partner.read_attribute(type) - new_partner_supply
         new_supply += bought
         self.credits -= bought * partner.selling_price(type)
+        return if self.credits < 0
         new_partner_credits = partner.credits +
           bought * partner.selling_price(type)
         partner.update_attributes(type => new_partner_supply,
@@ -37,7 +38,7 @@ module Trade
 
       self.attributes = {type => new_supply}
     end
-
+    
     def buying(type)
       read_attribute("buying_#{type}")
     end
@@ -65,6 +66,7 @@ module Trade
     end
 
     def buying?(type)
+      return false if credits.eql?(0)
       buying(type) > read_attribute(type)
     end
 

@@ -42,5 +42,7 @@ module GuardiansRails3MigrationApp
     config.generators do |g|
       g.test_framework :rspec
     end
+
+    Time::DATE_FORMATS[:countdown] = "%M:%S"
   end
 end

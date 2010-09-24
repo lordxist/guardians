@@ -16,67 +16,68 @@ module Trade
       end
       trade_partners.sort! {|x, y| x.selling_price(type) <=> y.selling_price(type) }
 
-      new_supply = read_attribute(type)
+      new_supply = send(type)
       for partner in trade_partners
         return unless buying?(type)
 
-        new_partner_supply = partner.read_attribute(type) -
+        new_partner_supply = partner.send(type) -
           (buying(type) - new_supply)
         if new_partner_supply < partner.selling(type)
-          new_partner_supply = partner.read_attribute(type)
+          new_partner_supply = partner.send(type)
         end
         
-        bought = partner.read_attribute(type) - new_partner_supply
+        bought = partner.send(type) - new_partner_supply
         new_supply += bought
         self.credits -= bought * partner.selling_price(type)
         return if self.credits < 0
         new_partner_credits = partner.credits +
           bought * partner.selling_price(type)
-        partner.update_attributes(type => new_partner_supply,
-          :credits => new_partner_credits)
+        partner.send("#{type}=", new_partner_supply)
+        partner.credits = new_partner_credits
+        partner.save if partner.method_exists?(:save)
       end
 
-      self.attributes = {type => new_supply}
+      self.send("#{type}=", new_supply)
     end
     
     def buying(type)
-      read_attribute("buying_#{type}")
+      send("buying_#{type}")
     end
 
     def selling(type)
-      read_attribute("selling_#{type}")
+      send("selling_#{type}")
     end
 
     def buying_price(type)
-      read_attribute("buying_#{type}_price")
+      send("buying_#{type}_price")
     end
 
     def selling_price(type)
-      read_attribute("selling_#{type}_price")
+      send("selling_#{type}_price")
     end
 
     def buying_amount(type)
-      return 0 if buying(type) < read_attribute(type)
-      buying(type) - read_attribute(type)
+      return 0 if buying(type) < send(type)
+      buying(type) - send(type)
     end
 
     def selling_amount(type)
-      return 0 if selling(type) > read_attribute(type)
-      read_attribute(type) - selling(type)
+      return 0 if selling(type) > send(type)
+      send(type) - selling(type)
     end
 
     def buying?(type)
       return false if credits.eql?(0)
-      buying(type) > read_attribute(type)
+      buying(type) > send(type)
     end
 
     def selling?(type)
       return false unless selling_enabled?(type)
-      read_attribute(type) > selling(type)
+      send(type) > selling(type)
     end
     
     def selling_enabled?(type)
-      read_attribute("enable_selling_#{type}")
+      send("enable_selling_#{type}")
     end
     
     def method_missing(method_symbol, *args)

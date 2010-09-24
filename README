@@ -4,6 +4,5 @@ TO DO:
 * add/update test coverage of libraries and plugins
 * rewrite lib/trade in order to:
   * refactor buy method (outsourcing the trade partners' selection/ordering)
-  * make it independent of ActiveRecord (using send instead of read_attribute)
 
 Copyright (c) 2010 Julian Jabs under the MIT License

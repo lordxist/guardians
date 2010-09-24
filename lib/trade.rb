@@ -8,36 +8,39 @@ module Trade
   
   module InstanceMethods
     def buy(type)
-      return unless buying?(type)
+      for partner in sorted_trade_partners(type)
+        bought = partner.buy_from(type, affordable_buying_amount(type))
+        return unless bought > 0
+        send("#{type}=", send(type) + bought)
+        self.credits -= bought * partner.selling_price(type)
 
-      trade_partners.reject! do |partner|
+        return unless buying?(type)
+      end
+    end
+    
+    def buy_from(type, buying_amount)
+      return 0 unless (bought = bought(type, buying_amount)) > 0
+      send("#{type}=", send(type) - bought)
+      self.credits += bought * selling_price(type)
+      save if method_exists?(:save)
+      return bought
+    end
+    
+    def bought(type, buying_amount)
+      return selling_amount(type) if buying_amount > selling_amount(type)
+      buying_amount
+    end
+    
+    def sorted_trade_partners(type)
+      return [] unless buying?(type)
+      sorted_trade_partners = trade_partners
+      sorted_trade_partners.reject! do |partner|
         !partner.selling?(type) ||
           partner.selling_price(type) > buying_price(type)
       end
-      trade_partners.sort! {|x, y| x.selling_price(type) <=> y.selling_price(type) }
-
-      new_supply = send(type)
-      for partner in trade_partners
-        return unless buying?(type)
-
-        new_partner_supply = partner.send(type) -
-          (buying(type) - new_supply)
-        if new_partner_supply < partner.selling(type)
-          new_partner_supply = partner.send(type)
-        end
-        
-        bought = partner.send(type) - new_partner_supply
-        new_supply += bought
-        self.credits -= bought * partner.selling_price(type)
-        return if self.credits < 0
-        new_partner_credits = partner.credits +
-          bought * partner.selling_price(type)
-        partner.send("#{type}=", new_partner_supply)
-        partner.credits = new_partner_credits
-        partner.save if partner.method_exists?(:save)
+      sorted_trade_partners.sort! do |x, y|
+        x.selling_price(type) <=> y.selling_price(type)
       end
-
-      self.send("#{type}=", new_supply)
     end
     
     def buying(type)
@@ -60,7 +63,12 @@ module Trade
       return 0 if buying(type) < send(type)
       buying(type) - send(type)
     end
-
+    
+    def affordable_buying_amount(type, price)
+      return buying_amount(type) if buying_amount(type) < credits/price
+      credits/price > 0 ? credits/price : 0
+    end
+    
     def selling_amount(type)
       return 0 if selling(type) > send(type)
       send(type) - selling(type)
@@ -72,12 +80,8 @@ module Trade
     end
 
     def selling?(type)
-      return false unless selling_enabled?(type)
+      return false unless send("enable_selling_#{type}")
       send(type) > selling(type)
-    end
-    
-    def selling_enabled?(type)
-      send("enable_selling_#{type}")
     end
     
     def method_missing(method_symbol, *args)

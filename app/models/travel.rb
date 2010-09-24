@@ -1,4 +1,4 @@
-require 'core_ext/point2d'
+require 'point2d/distance_calc'
 class Travel < ActiveRecord::Base
   attr_readonly :x_start, :y_start, :x_dest, :y_dest, :starship_id
   

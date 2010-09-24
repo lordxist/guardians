@@ -32,6 +32,8 @@ gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem 'inherited_resources', '1.1.2'
 
+gem 'acts_as_fu'
+
 group :test, :development do
   gem 'rspec-rails', :git => 'git://github.com/rspec/rspec-rails', :ref => '2ddb0778dfe9e016cd4b3ae3245d9b08a8f4b60c'
   gem 'factory_girl_rails'

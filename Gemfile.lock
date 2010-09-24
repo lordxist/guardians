@@ -44,6 +44,9 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
+    acts_as_fu (0.0.7.2)
+      activerecord
+      sqlite3-ruby
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
@@ -140,6 +143,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_fu
   authlogic!
   capybara
   cucumber

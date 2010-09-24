@@ -5,7 +5,7 @@ class Starship < ActiveRecord::Base
   acts_as_positioned2d
   
   has_one :travel
-
+  
   before_create :set_position, :set_supply_and_trade_settings
   before_update :buy_durasteel, :buy_plasteel, :buy_tibanna
   before_update :check_if_travel_ended

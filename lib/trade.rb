@@ -9,10 +9,11 @@ module Trade
   module InstanceMethods
     def buy(type)
       for partner in sorted_trade_partners(type)
-        bought = partner.buy_from(type, affordable_buying_amount(type))
+        price = partner.selling_price(type)
+        bought = partner.buy_from(type, affordable_buying_amount(type, price))
         return unless bought > 0
         send("#{type}=", send(type) + bought)
-        self.credits -= bought * partner.selling_price(type)
+        self.credits -= bought * price
 
         return unless buying?(type)
       end

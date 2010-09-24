@@ -2,7 +2,5 @@ Space exploration, trade & battle browser game
 
 TO DO:
 * add/update test coverage of libraries and plugins
-* rewrite lib/trade in order to:
-  * refactor buy method (outsourcing the trade partners' selection/ordering)
 
 Copyright (c) 2010 Julian Jabs under the MIT License

@@ -1,6 +1,6 @@
 Space exploration, trade & battle browser game
 
 TO DO:
-* add/update test coverage of libraries and plugins
+* make lib/trade a little more cleaner and add further tests to it
 
 Copyright (c) 2010 Julian Jabs under the MIT License

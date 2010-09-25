@@ -1,4 +1,3 @@
-require 'point2d/distance_calc'
 class Travel < ActiveRecord::Base
   attr_readonly :x_start, :y_start, :x_dest, :y_dest, :starship_id
   
@@ -9,10 +8,9 @@ class Travel < ActiveRecord::Base
   end
 
   def arrival_time
-    created_at +
-      Point2D.new(x_start, y_start).unidimensional_distances_sum(x_dest, y_dest)
+    created_at + DistanceCalc.unidim_dist_sum(x_start, y_start, x_dest, y_dest)
   end
-
+  
   def destination
     Starsystem.at_coords(x_dest, y_dest)
   end

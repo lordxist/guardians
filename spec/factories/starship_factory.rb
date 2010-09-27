@@ -13,7 +13,5 @@ class Factory
   end
 end
 
-Factory.define :starship, :default_strategy => :create_without_validation do |s|
-  s.x_coord 0
-  s.y_coord 0
+Factory.define :starship, :default_strategy => :create_without_validation do
 end

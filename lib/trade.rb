@@ -19,12 +19,12 @@ module Trade
       end
     end
     
-    def buying(type)
-      send("buying_#{type}")
+    def buying_upto(type)
+      send("buying_#{type}_upto")
     end
 
-    def selling(type)
-      send("selling_#{type}")
+    def selling_downto(type)
+      send("selling_#{type}_downto")
     end
 
     def buying_price(type)
@@ -35,24 +35,24 @@ module Trade
       send("selling_#{type}_price")
     end
 
-    def buying_amount(type)
-      return 0 if buying(type) < send(type)
-      buying(type) - send(type)
+    def buying(type)
+      return 0 if buying_upto(type) < send(type)
+      buying_upto(type) - send(type)
     end
     
-    def selling_amount(type)
-      return 0 if selling(type) > send(type)
-      send(type) - selling(type)
+    def selling(type)
+      return 0 if selling_downto(type) > send(type)
+      send(type) - selling_downto(type)
     end
 
     def buying?(type)
       return false if credits.eql?(0)
-      buying(type) > send(type)
+      buying_upto(type) > send(type)
     end
 
     def selling?(type)
       return false unless send("enable_selling_#{type}")
-      send(type) > selling(type)
+      send(type) > selling_downto(type)
     end
     
     def method_missing(method_symbol, *args)
@@ -72,7 +72,7 @@ module Trade
 
     private
     def bought(type, buying_amount)
-      return selling_amount(type) if buying_amount > selling_amount(type)
+      return selling(type) if buying_amount > selling(type)
       buying_amount
     end
 
@@ -89,7 +89,7 @@ module Trade
     end
 
     def affordable_buying_amount(type, price)
-      return buying_amount(type) if buying_amount(type) < credits/price
+      return buying(type) if buying(type) < credits/price
       credits/price > 0 ? credits/price : 0
     end
   end

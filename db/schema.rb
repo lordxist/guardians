@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100917183241) do
+ActiveRecord::Schema.define(:version => 20100927150543) do
 
   create_table "starships", :force => true do |t|
     t.integer  "user_id"
@@ -20,25 +20,25 @@ ActiveRecord::Schema.define(:version => 20100917183241) do
     t.integer  "y_coord"
     t.integer  "speed"
     t.integer  "durasteel"
-    t.integer  "buying_durasteel"
     t.integer  "buying_durasteel_price"
-    t.integer  "selling_durasteel"
     t.integer  "selling_durasteel_price"
     t.integer  "plasteel"
-    t.integer  "buying_plasteel"
     t.integer  "buying_plasteel_price"
-    t.integer  "selling_plasteel"
     t.integer  "selling_plasteel_price"
     t.integer  "tibanna"
-    t.integer  "buying_tibanna"
     t.integer  "buying_tibanna_price"
-    t.integer  "selling_tibanna"
     t.integer  "selling_tibanna_price"
     t.string   "name"
     t.integer  "credits"
     t.boolean  "enable_selling_durasteel"
     t.boolean  "enable_selling_plasteel"
     t.boolean  "enable_selling_tibanna"
+    t.integer  "buying_durasteel_upto"
+    t.integer  "selling_durasteel_downto"
+    t.integer  "buying_plasteel_upto"
+    t.integer  "selling_plasteel_downto"
+    t.integer  "buying_tibanna_upto"
+    t.integer  "selling_tibanna_downto"
   end
 
   create_table "travels", :force => true do |t|

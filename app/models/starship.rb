@@ -54,9 +54,9 @@ class Starship < ActiveRecord::Base
     ["durasteel", "plasteel", "tibanna"].each do |type|
       attr.merge!(
         type => 0,
-        "buying_#{type}" => 0,
+        "buying_#{type}_upto" => 0,
         "buying_#{type}_price" => 10,
-        "selling_#{type}" => 0,
+        "selling_#{type}_downto" => 0,
         "selling_#{type}_price" => 10,
         "enable_selling_#{type}" => false
       )

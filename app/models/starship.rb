@@ -31,6 +31,30 @@ class Starship < ActiveRecord::Base
     starships_on_same_position
   end
   
+  def buying_durasteel_upto=(value)
+    self[:buying_durasteel_upto] = value.to_i
+  end
+
+  def buying_plasteel_upto=(value)
+    self[:buying_plasteel_upto] = value.to_i
+  end
+
+  def buying_tibanna_upto=(value)
+    self[:buying_tibanna_upto] = value.to_i
+  end
+
+  def selling_durasteel_downto=(value)
+    self[:selling_durasteel_downto] = value.to_i
+  end
+
+  def selling_plasteel_downto=(value)
+    self[:selling_plasteel_downto] = value.to_i
+  end
+
+  def selling_tibanna_downto=(value)
+    self[:selling_tibanna_downto] = value.to_i
+  end
+
   private
   def check_if_travel_ended
     if travel.try(:ended?)

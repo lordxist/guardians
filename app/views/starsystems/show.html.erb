@@ -11,7 +11,7 @@
       <td><%= starship.name %></td>
       <td>
       <% for type in %w(durasteel plasteel tibanna) %>
-      <% unless starship.selling(type).eql?(0) %>
+      <% if starship.selling?(type) %>
       <%= type %>:
       <%= starship.selling(type)  %>
       <% end %>
@@ -19,7 +19,7 @@
       </td>
       <td>
       <% for type in %w(durasteel plasteel tibanna) %>
-      <% unless starship.buying(type).eql?(0) %>
+      <% if starship.buying?(type) %>
       <%= type %>:
       <%= starship.buying(type)  %>
       <% end %>

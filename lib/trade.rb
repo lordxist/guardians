@@ -41,7 +41,7 @@ module Trade
     end
     
     def selling(type)
-      return 0 if selling_downto(type) > send(type)
+      return 0 unless selling?(type)
       send(type) - selling_downto(type)
     end
 
